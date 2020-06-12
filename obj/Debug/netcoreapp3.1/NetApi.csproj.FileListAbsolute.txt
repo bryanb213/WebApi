@@ -55,3 +55,5 @@
 /Users/bryanblancas/Desktop/NetWork/NetApi/obj/Debug/netcoreapp3.1/NetApi.dll
 /Users/bryanblancas/Desktop/NetWork/NetApi/obj/Debug/netcoreapp3.1/NetApi.pdb
 /Users/bryanblancas/Desktop/NetWork/NetApi/obj/Debug/netcoreapp3.1/NetApi.genruntimeconfig.cache
+/Users/bryanblancas/Desktop/NetWork/NetApi/bin/Debug/netcoreapp3.1/AutoMapper.dll
+/Users/bryanblancas/Desktop/NetWork/NetApi/bin/Debug/netcoreapp3.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
