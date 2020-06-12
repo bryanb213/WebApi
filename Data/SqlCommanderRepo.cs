@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using NetApi.Models;
@@ -11,6 +12,17 @@ namespace NetApi.Data
         {
             _repo = context;
         }
+
+        public void CreateCommand(Command cmd)
+        {
+            if(cmd == null)
+            {
+                throw new ArgumentNullException(nameof(cmd));
+            }
+
+            _repo.Commands.Add(cmd);
+        }
+
         public Command GetCommandById(int id)
         {
             return _repo.Commands.FirstOrDefault(x => x.Id == id);
@@ -19,6 +31,11 @@ namespace NetApi.Data
         public IEnumerable <Command> GetCommands()
         {
             return _repo.Commands.ToList();
+        }
+
+        public bool SaveChanges()
+        {
+            return (_repo.SaveChanges() >= 0);
         }
     }
 }
