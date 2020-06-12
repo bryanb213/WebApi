@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using NetApi.Data;
 using NetApi.Models;
 
 namespace NetApi.Controllers
@@ -17,13 +18,13 @@ namespace NetApi.Controllers
         [HttpGet]
         public ActionResult <IEnumerable<Command>>GetCommands()
         {
-            
+            return Ok();
         }
 
         [HttpGet("{id}")]
         public ActionResult GetCommandById(int id)
         {
-
+            return Ok();
         }
     }
 }
