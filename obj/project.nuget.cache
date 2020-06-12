@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "M8fKtTi6L/WwtUXSbfVz9U/dgvDpKpzFSjc3E4tccTUe1ZFywpCkTh1jEj2aWtPTdawyRAeb5J/fMXCa+E+k5g==",
+  "dgSpecHash": "uOHFI87dI/KA5YUmjdsH/3B6C1RG6FVicQFlvHcFhEyNnZKnx+McyOYhmm8zyoaYL41N6EERln9Bt6A9dXN5IQ==",
   "success": true,
   "projectFilePath": "/Users/bryanblancas/Desktop/NetWork/NetApi/NetApi.csproj",
   "expectedPackageFiles": [
+    "/Users/bryanblancas/.nuget/packages/automapper/9.0.0/automapper.9.0.0.nupkg.sha512",
+    "/Users/bryanblancas/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/7.0.0/automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
     "/Users/bryanblancas/.nuget/packages/bouncycastle.netcore/1.8.3/bouncycastle.netcore.1.8.3.nupkg.sha512",
     "/Users/bryanblancas/.nuget/packages/google.protobuf/3.6.1/google.protobuf.3.6.1.nupkg.sha512",
     "/Users/bryanblancas/.nuget/packages/k4os.compression.lz4/1.1.11/k4os.compression.lz4.1.1.11.nupkg.sha512",

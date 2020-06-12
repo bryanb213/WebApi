@@ -9,22 +9,25 @@ namespace NetApi.Controllers
     [ApiController]
     public class CommandsController : ControllerBase
     {
-        private readonly DataContext _repo;
-        public CommandsController(DataContext context)
+        private readonly ICommanderRepo _repo;
+        public CommandsController(ICommanderRepo context)
         {
             _repo = context;
         }
 
         [HttpGet]
-        public ActionResult <IEnumerable<Command>>GetCommands()
+        public ActionResult <IEnumerable<Command>> GetCommands()
         {
-            return Ok();
+            var commands = _repo.GetCommands();
+            return Ok(commands);
         }
 
         [HttpGet("{id}")]
-        public ActionResult GetCommandById(int id)
+        public ActionResult <Command> GetCommandById(int id)
         {
-            return Ok();
+            var command =_repo.GetCommandById(id);
+
+            return Ok(command);
         }
     }
 }
