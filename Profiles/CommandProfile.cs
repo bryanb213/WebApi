@@ -11,6 +11,7 @@ namespace NetApi.Profiles
             //Source -> Target
             CreateMap<Command, CommandDto>();
             CreateMap<CreateCommandDto, Command>();
+            CreateMap<UpdateCommandDto, Command>();
         }
     }
 }

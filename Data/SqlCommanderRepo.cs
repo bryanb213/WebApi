@@ -37,5 +37,10 @@ namespace NetApi.Data
         {
             return (_repo.SaveChanges() >= 0);
         }
+
+        public void UpdateCommand(Command cmd)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

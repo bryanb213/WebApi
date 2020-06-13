@@ -27,7 +27,7 @@ namespace NetApi.Controllers
             return Ok(_map.Map<IEnumerable<CommandDto>>(commands));
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetCommandById")]
         public ActionResult <CommandDto> GetCommandById(int id)
         {
             var command =_repo.GetCommandById(id);
@@ -46,7 +46,28 @@ namespace NetApi.Controllers
             _repo.CreateCommand(model);
             _repo.SaveChanges();
 
-            return Ok();
+            var CmdDto = _map.Map<CommandDto>(model);
+
+            return CreatedAtRoute(nameof(GetCommandById), new { Id = CmdDto.Id }, CmdDto);
+
+            //return Ok(CmdDto);
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult UpdateCommand(int id, UpdateCommandDto dto)
+        {
+            var modelFromRepo = _repo.GetCommandById(id);
+            if(modelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _map.Map(dto, modelFromRepo);
+
+            _repo.UpdateCommand(modelFromRepo);
+            _repo.SaveChanges();
+
+            return NoContent();
         }
     }
 }

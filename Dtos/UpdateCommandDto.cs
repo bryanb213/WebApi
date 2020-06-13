@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace NetApi.Dtos
 {
-    public class CreateCommandDto
+    public class UpdateCommandDto
     {
         [Required]
         public string HowTo { get; set; }
