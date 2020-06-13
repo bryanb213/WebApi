@@ -23,6 +23,15 @@ namespace NetApi.Data
             _repo.Commands.Add(cmd);
         }
 
+        public void DeleteCommand(Command cmd)
+        {
+            if(cmd == null)
+            {
+                throw new ArgumentNullException(nameof(cmd));
+            }
+            _repo.Remove(cmd);
+        }
+
         public Command GetCommandById(int id)
         {
             return _repo.Commands.FirstOrDefault(x => x.Id == id);
@@ -40,7 +49,7 @@ namespace NetApi.Data
 
         public void UpdateCommand(Command cmd)
         {
-            throw new NotImplementedException();
+            //Nothing
         }
     }
 }

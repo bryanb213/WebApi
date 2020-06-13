@@ -74,7 +74,10 @@ namespace NetApi.Controllers
         [HttpPatch("{id}")]
         public ActionResult PartialCommandUpdate(int id, JsonPatchDocument<UpdateCommandDto> patchDoc)
         {
+            //get command
             var commandModelFromRepo = _repo.GetCommandById(id);
+
+            //check if cmd exist 
             if(commandModelFromRepo == null)
             {
                 return NotFound();
@@ -93,6 +96,20 @@ namespace NetApi.Controllers
             _repo.UpdateCommand(commandModelFromRepo);
             _repo.SaveChanges();
 
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult DeleteCommand(int id)
+        {
+            var commandFromRepo = _repo.GetCommandById(id);
+            if(commandFromRepo == null)
+            {
+                return NotFound();
+            }
+            _repo.DeleteCommand(commandFromRepo);
+            _repo.SaveChanges();
+            
             return NoContent();
         }
     }
