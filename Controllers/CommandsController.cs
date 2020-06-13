@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using NetApi.Data;
 using NetApi.Dtos;
@@ -65,6 +66,31 @@ namespace NetApi.Controllers
             _map.Map(dto, modelFromRepo);
 
             _repo.UpdateCommand(modelFromRepo);
+            _repo.SaveChanges();
+
+            return NoContent();
+        }
+
+        [HttpPatch("{id}")]
+        public ActionResult PartialCommandUpdate(int id, JsonPatchDocument<UpdateCommandDto> patchDoc)
+        {
+            var commandModelFromRepo = _repo.GetCommandById(id);
+            if(commandModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            var commandToPatch = _map.Map<UpdateCommandDto>(commandModelFromRepo);
+            patchDoc.ApplyTo(commandToPatch, ModelState);
+
+            if(!TryValidateModel(commandToPatch))
+            {
+                return ValidationProblem(ModelState);
+            }
+
+            _map.Map(commandToPatch, commandModelFromRepo);
+
+            _repo.UpdateCommand(commandModelFromRepo);
             _repo.SaveChanges();
 
             return NoContent();

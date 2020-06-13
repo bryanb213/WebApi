@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NetApi.Data;
+using Newtonsoft.Json.Serialization;
 
 namespace NetApi
 {
@@ -29,7 +30,9 @@ namespace NetApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(options => options.UseMySql(Configuration["DBInfo:ConnectionString"]));
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(x => {
+                x.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<ICommanderRepo, SqlCommanderRepo>();
         }
