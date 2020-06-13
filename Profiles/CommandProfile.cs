@@ -8,7 +8,9 @@ namespace NetApi.Profiles
     {
         public CommandProile()
         {
+            //Source -> Target
             CreateMap<Command, CommandDto>();
+            CreateMap<CreateCommandDto, Command>();
         }
     }
 }

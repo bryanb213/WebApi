@@ -38,5 +38,15 @@ namespace NetApi.Controllers
 
             return NotFound();
         }
+
+        [HttpPost]
+        public ActionResult <CommandDto> CreateCommand(CreateCommandDto dto)
+        {
+            var model = _map.Map<Command>(dto);
+            _repo.CreateCommand(model);
+            _repo.SaveChanges();
+
+            return Ok();
+        }
     }
 }
